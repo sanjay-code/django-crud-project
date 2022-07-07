@@ -1,0 +1,28 @@
+{% extends "crud/base.html" %}
+{% load static %}
+{% block titleblock %}
+	delete page
+{% endblock titleblock %}
+{% block content %}
+<h1 class="bg-secondary text-center text-white my-4 rounded-pill py-3">Delete itme </h1>
+    <div class="row">
+        <div class="col-md-5 offset-md-4 mt-5">
+            <div class="alert alert-danger bg-white">
+                <h4 class="text-white bg-success p-2 text-center">Delete item</h4>
+                    <hr>
+                <div class="alert alert-danger">
+                    <h4 class="text-center">Are you want to delete </h4>
+                </div>
+               
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                           
+                            <a href="{% url 'home' %}" class="btn btn-danger">cancel</a>
+                            <input type="submit" class="btn btn-info" value="confirm">
+                        </form>
+                
+                </div>
+
+        </div>
+    </div>
+{% endblock content %}

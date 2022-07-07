@@ -1,0 +1,35 @@
+{% extends "crud/base.html" %}
+{% load static %}
+{% block titleblock %}
+	add sections
+{% endblock titleblock %}
+
+{% block msg %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-2 mt-3">
+				{% if messages %}
+                {% for message in messages %}
+                	<h4 class="p-2 alert alert-danger">{{message}}</h4>
+
+                {% endfor %}
+
+            {% endif %} 
+			</div>
+		</div>
+	</div>
+{% endblock msg %}
+
+{% block content %}
+<h1 class="bg-secondary text-center text-white my-4 rounded-pill py-3">Add data section </h1>
+	<div class="row">
+		<div class="col-md-6 offset-3 mt-2 border p-5 shadow-lg p-3 mb-5 bg-white rounded">
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{fm.as_p}}
+				<input type="submit" value="submit" class="btn btn-primary">
+				<a href="{% url 'home' %}" class="btn btn-danger">back home</a>
+			</form>
+		</div>
+	</div>
+{% endblock content %}

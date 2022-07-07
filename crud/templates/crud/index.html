@@ -1,0 +1,66 @@
+{% extends "crud/base.html" %}
+{% block msg %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-1 mt-3">
+        {% if messages %}
+                {% for message in messages %}
+                  <h4 class="p-2 alert alert-danger text-center">{{message}}</h4>
+
+                {% endfor %}
+
+            {% endif %} 
+      </div>
+    </div>
+  </div>
+{% endblock msg %}
+
+{% block content %}
+  <h1 class="bg-secondary text-center text-white my-4 rounded-pill py-3">Function based crud project</h1>
+  <div class="row">
+    
+
+    <div class="col-md-10 offset-1">
+      {% if form %}
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NAME</th>
+              <th scope="col">Email</th>
+              <th scope="col">P.ID</th>
+              <th>ADDING TIME</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% for fm in form %}
+            <tr>
+              <th>{{fm.id}}</th>
+              <td>{{fm.name}}</td>
+              <td>{{fm.email}}</td>
+              <td>{{fm.phone}}</td>
+              <td>{{fm.date_time}}</td>
+              <td>
+                <a href="{% url 'edit' fm.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete' fm.id %}" class="btn btn-danger">Delete</a>
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+          
+        </table>
+        {% else %}
+        no data
+        {% endif %}
+        
+          
+            
+        
+        
+      </div>
+  </div>
+{% endblock content %}
